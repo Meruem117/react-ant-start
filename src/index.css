@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.mainContent {
+    @apply h-screen;
+    @apply w-full;
+    @apply p-16;
+}
