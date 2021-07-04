@@ -7,10 +7,6 @@ import Nav from '../../components/Nav/Nav'
 import Footer from '../../components/Footer/Footer'
 
 class Main extends Component {
-    state = {
-        current: 'home'
-    }
-
     render() {
         return (
             <div>

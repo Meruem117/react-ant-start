@@ -25,9 +25,6 @@ class Space extends Component {
     }
 
     render() {
-        this.getUpList().then(() =>
-            console.log(this.state.up)
-        )
         return (
             <div>
                 <h1>Space</h1>
