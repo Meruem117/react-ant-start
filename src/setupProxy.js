@@ -9,12 +9,17 @@ module.exports = function (app) {
             //     '^/api': ''
             // }
         }),
-        // proxy('/api', {
-        //     target: 'http://localhost:5000',
-        //     changeOrigin: true,
-        //     pathRewrite: {
-        //         '^/api': ''
-        //     }
-        // })
+        proxy('/card', {
+            target: 'https://api.bilibili.com/x/web-interface', //mid
+            changeOrigin: true,
+        }),
+        proxy('/search', {
+            target: 'https://api.bilibili.com/x/space/arc', //mid,pn
+            changeOrigin: true
+        }),
+        proxy('/view', {
+            target: 'https://api.bilibili.com/x/web-interface', //bvid
+            changeOrigin: true
+        })
     )
 }

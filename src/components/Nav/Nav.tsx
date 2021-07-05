@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { Menu } from 'antd'
 import { AntDesignOutlined, ReadOutlined, ContainerOutlined, ApiOutlined } from '@ant-design/icons'
 
-// interface propType {
+// interface propsType {
 //     current: string
 // }
 
@@ -12,7 +12,7 @@ import { AntDesignOutlined, ReadOutlined, ContainerOutlined, ApiOutlined } from 
 //     current: string
 // }
 
-// class Nav extends Component<propType, stateType> {
+// class Nav extends Component<propsType, stateType> {
 class Nav extends Component {
     // static propTypes = {
     //     current: PropTypes.string.isRequired
@@ -35,16 +35,16 @@ class Nav extends Component {
             <div className="h-14 w-full flex fixed top-0 justify-start pt-2 pl-2 shadow-xl bg-white z-10">
                 <Menu onClick={this.handleClick} selectedKeys={[current]} mode="horizontal">
                     <Menu.Item key="home" icon={<AntDesignOutlined />}>
-                        <Link to="/home">Home</Link>
+                        <Link to="/home" className="text-base">Home</Link>
                     </Menu.Item>
                     <Menu.Item key="about" icon={<ReadOutlined />}>
-                        <Link to="/about">About</Link>
+                        <Link to="/about" className="text-base">About</Link>
                     </Menu.Item>
                     <Menu.Item key="space" icon={<ContainerOutlined />}>
-                        <Link to="/space">Space</Link>
+                        <Link to="/space" className="text-base">Space</Link>
                     </Menu.Item>
                     <Menu.Item key="bilibili" icon={<ApiOutlined />}>
-                        <a href="https://www.bilibili.com/" target="_blank" rel="noopener noreferrer">Bilibili</a>
+                        <a href="https://www.bilibili.com/" target="_blank" rel="noopener noreferrer" className="text-base">Bilibili</a>
                     </Menu.Item>
                 </Menu>
             </div>
