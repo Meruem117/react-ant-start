@@ -6,7 +6,7 @@ import Space from '../Space/Space'
 import Nav from '../../components/Nav/Nav'
 import Footer from '../../components/Footer/Footer'
 
-class Main extends Component {
+export default class Main extends Component {
     render() {
         return (
             <div>
@@ -24,5 +24,3 @@ class Main extends Component {
         )
     }
 }
-
-export default Main

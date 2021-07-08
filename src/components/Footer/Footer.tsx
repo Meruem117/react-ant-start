@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { CopyrightCircleOutlined } from '@ant-design/icons'
 
-class Footer extends Component {
+export default class Footer extends Component {
     render() {
         return (
             <div className="text-center align-middle w-full text-gray-500 fixed bottom-3">
@@ -12,5 +12,3 @@ class Footer extends Component {
         )
     }
 }
-
-export default Footer

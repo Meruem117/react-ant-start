@@ -7,7 +7,6 @@ interface propsType {
     history: any
 }
 
-
 interface stateType {
     up: {
         mid: string,
@@ -25,7 +24,7 @@ interface stateType {
     }[]
 }
 
-class Space extends Component<propsType, stateType> {
+export default class Space extends Component<propsType, stateType> {
     state: stateType = {
         up: [],
         ulist: []
@@ -103,5 +102,3 @@ class Space extends Component<propsType, stateType> {
         )
     }
 }
-
-export default Space

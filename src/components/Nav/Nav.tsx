@@ -13,7 +13,7 @@ import { AntDesignOutlined, ReadOutlined, ContainerOutlined, ApiOutlined } from 
 // }
 
 // class Nav extends Component<propsType, stateType> {
-class Nav extends Component {
+export default class Nav extends Component {
     // static propTypes = {
     //     current: PropTypes.string.isRequired
     // }
@@ -51,5 +51,3 @@ class Nav extends Component {
         )
     }
 }
-
-export default Nav

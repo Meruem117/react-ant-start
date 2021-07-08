@@ -5,7 +5,7 @@ interface propsType {
     history: any
 }
 
-class Home extends Component<propsType, any> {
+export default class Home extends Component<propsType, any> {
 
     toSpace = (): void => {
         this.props.history.push('/space')
@@ -23,5 +23,3 @@ class Home extends Component<propsType, any> {
         )
     }
 }
-
-export default Home
