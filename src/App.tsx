@@ -1,13 +1,8 @@
 import React, { Component } from 'react'
 import './App.css'
-import Main from './pages/Main/Main'
+import Main from './components/Main'
 
 class App extends Component {
-
-  state = {
-    data: []
-  }
-
   render() {
     return (
       <div>

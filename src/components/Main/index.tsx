@@ -1,12 +1,12 @@
 import React, { Component, lazy, Suspense } from 'react'
 import { Route, Switch, Redirect } from 'react-router-dom'
-import Nav from '../../components/Nav/Nav'
-import Footer from '../../components/Footer/Footer'
-import Loading from '../../components/Loading/Loading'
+import Nav from './Nav'
+import Footer from './Footer'
+import { Spin } from 'antd'
 
-const Home = lazy(() => import('../Home/Home'))
-const About = lazy(() => import('../About/About'))
-const Space = lazy(() => import('../Space/Space'))
+const Home = lazy(() => import('../Home'))
+const About = lazy(() => import('../About'))
+const Space = lazy(() => import('../Space'))
 
 export default class Main extends Component {
     render() {
@@ -14,7 +14,7 @@ export default class Main extends Component {
             <div>
                 <Nav />
                 <div className="h-screen w-full p-16">
-                    <Suspense fallback={<Loading />}>
+                    <Suspense fallback={<Spin />}>
                         <Switch>
                             <Route path="/home" component={Home} />
                             <Route path="/about" component={About} />
