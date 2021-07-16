@@ -11,7 +11,7 @@ const Space = lazy(() => import('../Space'))
 export default class Main extends Component {
     render() {
         return (
-            <div>
+            <>
                 <Nav />
                 <div className="h-screen w-full p-16">
                     <Suspense fallback={<Spin />}>
@@ -24,7 +24,7 @@ export default class Main extends Component {
                     </Suspense>
                 </div>
                 <Footer />
-            </div>
+            </>
         )
     }
 }
