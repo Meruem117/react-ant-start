@@ -1,104 +1,62 @@
-import React, { Component } from 'react'
-import axios from 'axios'
+import { useState, useEffect } from 'react'
+import { upItem, ulistItem } from '../../model'
+import { getUpList, getUpInfo } from '../../service'
 import { List, Avatar } from 'antd'
 import { LinkOutlined } from '@ant-design/icons'
 
-interface propsType {
-    history: any
-}
+const Space = () => {
 
-interface stateType {
-    up: {
-        mid: string,
-        name: string
-    }[],
-    ulist: {
-        card: {
-            mid: string,
-            name: string,
-            face: string,
-            Official: {
-                title: string
-            }
-        }
-    }[]
-}
+    const [up, setUp] = useState<upItem[]>([])
+    const [ulist] = useState<ulistItem[]>([])
 
-export default class Space extends Component<propsType, stateType> {
-    state: stateType = {
-        up: [],
-        ulist: []
-    }
-
-    initData = (): void => {
-        this.getUpList().then(() => {
-            const { up } = this.state
-            up.map(item => {
-                this.getUpInfo(item.mid)
-                return item
-            })
+    useEffect((): void => {
+        getUpList()
+            .then(res => setUp(res))
+            .catch(error => console.error(error))
+        up.map(item => {
+            getUpInfo(item.mid)
+                .then(res => { ulist.push(res) })   //对state中的数组进行push不会触发useEffect重复执行数据获取操作
+                .catch(error => console.error(error))
+            return item
         })
-    }
+    }, [up, ulist])
 
-    getUpList = async (): Promise<void> => {
-        try {
-            const response = await axios.get(`/api/getUp`)
-            this.setState({ up: response.data })
-        } catch (error) {
-            console.error(error)
-        }
-    }
-
-    getUpInfo = async (mid: string): Promise<void> => {
-        try {
-            const response = await axios.get(`/card?mid=${mid}`)
-            const res = response.data.data
-            const { ulist } = this.state
-            ulist.push(res)
-        } catch (error) {
-            console.error(error)
-        }
-    }
-
-    toUp = (mid: string): void => {
-        // this.props.history.push('')
+    const toUp = (mid: string): void => {
         console.log(mid)
     }
 
-    render() {
-        const { ulist } = this.state
-        return (
-            <div>
-                <h1 onClick={this.initData}>Space</h1>
-                <List
-                    itemLayout="horizontal"
-                    dataSource={ulist}
-                    renderItem={item => (
-                        <List.Item>
-                            <List.Item.Meta
-                                avatar={<Avatar size={64} src={item.card.face} className="cursor-pointer" />}
-                                title={
-                                    <div className="flex h-8">
-                                        <p
-                                            className="text-2xl tracking-wider cursor-pointer hover:text-blue-400"
-                                            onClick={() => this.toUp(item.card.mid)}
-                                        >{item.card.name}</p>
-                                        <a
-                                            href={`https://space.bilibili.com/${item.card.mid}`}
-                                            target="_blank"
-                                            rel="noreferrer"
-                                            className="inline p-2 cursor-pointer"
-                                        >
-                                            <LinkOutlined />
-                                        </a>
-                                    </div>
-                                }
-                                description={item.card.Official.title}
-                            />
-                        </List.Item>
-                    )}
-                />
-            </div>
-        )
-    }
+    return (
+        <>
+            <List
+                itemLayout="horizontal"
+                dataSource={ulist}
+                renderItem={item => (
+                    <List.Item>
+                        <List.Item.Meta
+                            avatar={<Avatar size={64} src={item.card.face} className="cursor-pointer" />}
+                            title={
+                                <div className="flex h-8">
+                                    <p
+                                        className="text-2xl tracking-wider cursor-pointer hover:text-blue-400"
+                                        onClick={() => toUp(item.card.mid)}
+                                    >{item.card.name}</p>
+                                    <a
+                                        href={`https://space.bilibili.com/${item.card.mid}`}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="inline p-2 cursor-pointer"
+                                    >
+                                        <LinkOutlined />
+                                    </a>
+                                </div>
+                            }
+                            description={item.card.Official.title}
+                        />
+                    </List.Item>
+                )}
+            />
+        </>
+    )
 }
+
+export default Space
