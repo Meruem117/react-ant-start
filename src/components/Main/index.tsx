@@ -14,7 +14,11 @@ export default class Main extends Component {
             <>
                 <Nav />
                 <div className="h-screen w-full p-16">
-                    <Suspense fallback={<Spin />}>
+                    <Suspense fallback={
+                        <div className="flex flex-col h-full w-full justify-center">
+                            <Spin />
+                        </div>
+                    }>
                         <Switch>
                             <Route path="/home" component={Home} />
                             <Route path="/about" component={About} />

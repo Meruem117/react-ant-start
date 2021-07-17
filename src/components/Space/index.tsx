@@ -9,13 +9,13 @@ const Space = () => {
     const [up, setUp] = useState<upItem[]>([])
     const [ulist] = useState<ulistItem[]>([])
 
-    useEffect((): void => {
+    useEffect(() => {
         getUpList()
             .then(res => setUp(res))
             .catch(error => console.error(error))
         up.map(item => {
             getUpInfo(item.mid)
-                .then(res => { ulist.push(res) })   //对state中的数组进行push不会触发useEffect重复执行数据获取操作
+                .then(res => { ulist.push(res) })   //对state中的数组进行push不会触发useEffect监听重复执行数据获取操作
                 .catch(error => console.error(error))
             return item
         })
