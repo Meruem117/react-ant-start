@@ -6,6 +6,7 @@ import { Spin } from 'antd'
 
 const Home = lazy(() => import('../Home'))
 const About = lazy(() => import('../About'))
+const List = lazy(() => import('../List'))
 const Space = lazy(() => import('../Space'))
 
 export default class Main extends Component {
@@ -22,7 +23,8 @@ export default class Main extends Component {
                         <Switch>
                             <Route path="/home" component={Home} />
                             <Route path="/about" component={About} />
-                            <Route path="/space" component={Space} />
+                            <Route path="/list" component={List} />
+                            <Route path="/space/:mid" component={Space} />
                             <Redirect to="/home" />
                         </Switch>
                     </Suspense>

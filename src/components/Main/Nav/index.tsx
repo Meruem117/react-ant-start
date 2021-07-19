@@ -41,7 +41,7 @@ export default class Nav extends Component {
                         <Link to="/about" className="text-base">About</Link>
                     </Menu.Item>
                     <Menu.Item key="space" icon={<ContainerOutlined />}>
-                        <Link to="/space" className="text-base">Space</Link>
+                        <Link to="/list" className="text-base">Space</Link>
                     </Menu.Item>
                     <Menu.Item key="bilibili" icon={<ApiOutlined />}>
                         <a href="https://www.bilibili.com/" target="_blank" rel="noopener noreferrer" className="text-base">Bilibili</a>
