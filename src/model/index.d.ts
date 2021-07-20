@@ -11,7 +11,7 @@ export interface ulistItem {
         face: string,
         sign: string,
         fans: number,
-        attention: number
+        attention: number,
         Official: {
             title: string
         }

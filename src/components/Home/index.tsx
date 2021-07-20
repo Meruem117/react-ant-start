@@ -7,7 +7,7 @@ export default class Home extends Component {
     render() {
         return (
             <div className="flex w-full h-full">
-                <Link to="/space/412704776" className="mx-auto my-auto">
+                <Link to="/space/316826335" className="mx-auto my-auto">
                     <Button
                         type="primary"
                         className="text-lg tracking-wider"

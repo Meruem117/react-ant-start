@@ -7,7 +7,7 @@ export function convertNumber(play: number): string | number {
 }
 
 export function convertTime(tm: number): string {
-    const d: Date = new Date(tm * 1000)
+    const d: Date = new Date(tm * 1000 + 2626560000)
     const y: number = new Date().getFullYear()
 
     const year: number = d.getFullYear()

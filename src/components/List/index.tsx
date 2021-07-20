@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { upItem, ulistItem } from '../../model'
 import { getUpList, getUpInfo } from '../../service'
@@ -29,7 +29,7 @@ const UpList = () => {
             )
             .catch(error => console.error(error))
         console.log(up, ulist)
-    }, [up])
+    }, [])
 
     return (
         <>

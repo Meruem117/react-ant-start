@@ -8,6 +8,7 @@ const Home = lazy(() => import('../Home'))
 const About = lazy(() => import('../About'))
 const List = lazy(() => import('../List'))
 const Space = lazy(() => import('../Space'))
+const Video = lazy(() => import('../Video'))
 
 export default class Main extends Component {
     render() {
@@ -25,6 +26,7 @@ export default class Main extends Component {
                             <Route path="/about" component={About} />
                             <Route path="/list" component={List} />
                             <Route path="/space/:mid" component={Space} />
+                            <Route path="/video/:bvid" component={Video} />
                             <Redirect to="/home" />
                         </Switch>
                     </Suspense>

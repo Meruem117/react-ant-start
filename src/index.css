@@ -1,3 +1,4 @@
+/*! @import */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -14,4 +15,16 @@
     padding: 30px 50px;
     text-align: center;
     border-radius: 4px;
+}
+
+.icon {
+    width: 28px;
+    height: 28px;
+}
+
+.icon_text {
+    @apply p-1;
+    @apply text-gray-600;
+    @apply ml-1;
+    @apply mr-8;
 }
