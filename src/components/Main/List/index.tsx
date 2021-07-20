@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { upItem, ulistItem } from '../../model'
-import { getUpList, getUpInfo } from '../../service'
+import { upItem, ulistItem } from '../../../model'
+import { getUpList, getUpInfo } from '../../../service'
 import { List, Avatar } from 'antd'
 import { LinkOutlined } from '@ant-design/icons'
 
@@ -30,6 +30,7 @@ const UpList = () => {
             .catch(error => console.error(error))
         console.log(up, ulist)
     }, [])
+    // TODO: fix data fetch bug
 
     return (
         <>

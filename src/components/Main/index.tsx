@@ -4,11 +4,12 @@ import Nav from './Nav'
 import Footer from './Footer'
 import { Spin } from 'antd'
 
-const Home = lazy(() => import('../Home'))
-const About = lazy(() => import('../About'))
-const List = lazy(() => import('../List'))
-const Space = lazy(() => import('../Space'))
-const Video = lazy(() => import('../Video'))
+const Home = lazy(() => import('./Home'))
+const About = lazy(() => import('./About'))
+const List = lazy(() => import('./List'))
+const Space = lazy(() => import('./Space'))
+const Video = lazy(() => import('./Video'))
+const Admin = lazy(() => import('../Admin'))
 
 export default class Main extends Component {
     render() {
@@ -23,6 +24,7 @@ export default class Main extends Component {
                     }>
                         <Switch>
                             <Route path="/home" component={Home} />
+                            <Route path="/admin" component={Admin} />
                             <Route path="/about" component={About} />
                             <Route path="/list" component={List} />
                             <Route path="/space/:mid" component={Space} />

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { videoItem } from '../../model'
-import { getDetail } from '../../service'
-import { convertNumber, convertTime } from '../../utils'
+import { videoItem } from '../../../model'
+import { getDetail } from '../../../service'
+import { convertNumber, convertTime } from '../../../utils'
 import { StopOutlined } from '@ant-design/icons'
 
 const Video = (props: any) => {

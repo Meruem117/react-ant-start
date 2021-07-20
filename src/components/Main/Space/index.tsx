@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { ulistItem, vlistItem } from '../../model'
-import { getUpInfo, getVideos } from '../../service'
-import { convertNumber, convertTime } from '../../utils'
+import { ulistItem, vlistItem } from '../../../model'
+import { getUpInfo, getVideos } from '../../../service'
+import { convertNumber, convertTime } from '../../../utils'
 import { Avatar, List, Card, Pagination } from 'antd'
 import { PlaySquareFilled, ClockCircleFilled } from '@ant-design/icons'
 
@@ -47,6 +47,7 @@ const VideoList = (props: any) => {
             .catch(error => console.error(error))
         console.log(vlist[0], up)
     }, [])
+    // TODO: fix data fetch bug
 
     const onChange = (): void => {
         getVideos(mid, page.current)
