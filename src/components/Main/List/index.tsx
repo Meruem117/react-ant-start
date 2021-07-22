@@ -1,39 +1,31 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { upItem, ulistItem } from '../../../model'
-import { getUpList, getUpInfo } from '../../../service'
-import { List, Avatar } from 'antd'
+import { ulistItem } from '../../../model'
+import { getUpList } from '../../../service/main'
+import { List, Avatar, Spin } from 'antd'
 import { LinkOutlined } from '@ant-design/icons'
 
 const UpList = () => {
 
-    const [up, setUp] = useState<upItem[]>([])
-    const [ulist] = useState<ulistItem[]>([])
+    const [ulist, setUList] = useState<ulistItem[]>([])
+    const [loading, setLoading] = useState<boolean>(true)
 
     useEffect(() => {
         getUpList()
-            .then(res => setUp(res))
-            .then(() =>
-                up.map(item => {
-                    if (ulist.length < up.length) {
-                        getUpInfo(item.mid)
-                            .then(res => {
-                                if (!ulist.includes(res)) {
-                                    ulist.push(res)
-                                }
-                            })   //对state中的数组进行push不会触发useEffect监听重复执行数据获取操作
-                            .catch(error => console.error(error))
-                    }
-                    return item
-                })
-            )
-            .catch(error => console.error(error))
-        console.log(up, ulist)
+            .then(res => setUList(res))
+            .then(() => setLoading(false))
     }, [])
-    // TODO: fix data fetch bug
+
+    if (loading) {
+        return (
+            <div className="flex flex-col h-full w-full justify-center">
+                <Spin />
+            </div>
+        )
+    }
 
     return (
-        <>
+        <div className="h-full w-full pl-16">
             <List
                 itemLayout="horizontal"
                 dataSource={ulist}
@@ -67,7 +59,7 @@ const UpList = () => {
                     </List.Item>
                 )}
             />
-        </>
+        </div>
     )
 }
 

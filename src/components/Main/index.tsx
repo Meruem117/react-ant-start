@@ -16,7 +16,7 @@ export default class Main extends Component {
         return (
             <>
                 <Nav />
-                <div className="h-screen w-full p-16">
+                <div className="h-screen w-full pt-16">
                     <Suspense fallback={
                         <div className="flex flex-col h-full w-full justify-center">
                             <Spin />

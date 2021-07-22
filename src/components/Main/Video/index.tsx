@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { videoItem } from '../../../model'
-import { getDetail } from '../../../service'
+import { getDetail } from '../../../service/main'
 import { convertNumber, convertTime } from '../../../utils'
+import { Spin } from 'antd'
 import { StopOutlined } from '@ant-design/icons'
 
 const Video = (props: any) => {
@@ -26,13 +27,21 @@ const Video = (props: any) => {
             his_rank: 0
         }
     })
+    const [loading, setLoading] = useState<boolean>(true)
     const { bvid } = props.match.params
 
     useEffect(() => {
         getDetail(bvid)
             .then(res => setVideo(res))
+            .then(() => setLoading(false))
             .catch(error => console.error(error))
     }, [bvid])
+
+    if (loading) {
+        <div className="flex flex-col h-full w-full justify-center">
+            <Spin />
+        </div>
+    }
 
     return (
         <div className="flex w-full h-auto mt-6 pb-12 pl-56 overflow-auto bg-white">

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ulistItem, vlistItem } from '../../../model'
-import { getUpInfo, getVideos } from '../../../service'
+import { getUpInfo, getVideos } from '../../../service/main'
 import { convertNumber, convertTime } from '../../../utils'
-import { Avatar, List, Card, Pagination } from 'antd'
+import { Avatar, Pagination, Spin } from 'antd'
 import { PlaySquareFilled, ClockCircleFilled } from '@ant-design/icons'
 
 const VideoList = (props: any) => {
@@ -23,36 +23,39 @@ const VideoList = (props: any) => {
         },
         archive_count: 0
     })
-    const [vlist] = useState<vlistItem[][]>([])
-    const [page, setPage] = useState({
-        current: 1,
-        total: 1,
-    })
+    const [vlist, setVList] = useState<vlistItem[]>([])
+    const [page, setPage] = useState<number>(1)
+    const [total, setTotal] = useState<number>(1)
+    const [loading, setLoading] = useState<boolean>(true)
     const { mid } = props.match.params
 
     useEffect(() => {
         getUpInfo(mid)
-            .then(res => setUp(res))
-            .then(() => {
-                setPage({
-                    current: 1,
-                    total: up.archive_count % 30 === 0 ? up.archive_count / 30 : up.archive_count / 30 + 1
-                })
+            .then(res => {
+                setUp(res)
+                setTotal(Math.ceil(res.archive_count / 30) * 30)
+                getVideos(mid, 1)
+                    .then(res => setVList(res))
             })
-            .then(() => {
-                getVideos(mid, page.current)
-                    .then(res => vlist[page.current - 1] = res)
-                    .catch(error => console.error(error))
-            })
+            .then(() => setLoading(false))
             .catch(error => console.error(error))
-        console.log(vlist[0], up)
-    }, [])
-    // TODO: fix data fetch bug
+    }, [mid])
 
-    const onChange = (): void => {
-        getVideos(mid, page.current)
-            .then(res => vlist[page.current - 1] = res)
+    const onChange = (page: number): void => {
+        setLoading(true)
+        setPage(page)
+        getVideos(mid, page)
+            .then(res => setVList(res))
+            .then(() => setLoading(false))
             .catch(error => console.error(error))
+    }
+
+    if (loading) {
+        return (
+            <div className="flex flex-col h-full w-full justify-center">
+                <Spin />
+            </div>
+        )
     }
 
     return (
@@ -87,63 +90,60 @@ const VideoList = (props: any) => {
             </div>
 
             <div className="w-4/5 h-3/4 pt-12 bg-white rounded mx-auto">
-                <List
-                    className="w-full h-full mx-auto"
-                    grid={{
-                        gutter: 16,
-                        column: 5,
-                        xs: 1,
-                        sm: 2,
-                        md: 3,
-                        lg: 4,
-                        xl: 5,
-                        xxl: 5,
-                    }}
-                    dataSource={vlist[0]}
-                    renderItem={item => (
-                        <List.Item>
-                            <Card
-                                style={{ width: '100%' }}
-                                className="rounded"
-                                cover={
-                                    <Link to={`/video/${item.bvid}`}>
-                                        <img
-                                            alt={item.title}
-                                            src={item.pic}
-                                            className="rounded"
-                                        />
+                <div className="grid grid-cols-5 gap-5">
+                    {
+                        vlist.map(video => {
+                            return (
+                                <div className="flex flex-col flex-nowrap flex-auto h-60" key={video.bvid}>
+                                    <Link to={`/video/${video.bvid}`}>
+                                        <div
+                                            className="flex rounded cursor-pointer bg-no-repeat bg-cover h-40 w-full"
+                                            style={{ backgroundImage: `url('${video.pic}')` }}
+                                        >
+                                            <div className="flex justify-end w-full">
+                                                <div className="flex flex-col justify-end">
+                                                    <div
+                                                        className="bg-gray-800 bg-opacity-60 text-gray-300 rounded-tl-lg rounded-br px-1 py-0.5 text-xs tracking-wider"
+                                                    >{video.length}</div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </Link>
-                                }>
-                                <Link to={`/video/${item.bvid}`}>
-                                    <div
-                                        className="h-16 text-base overflow-hidden mt-2 text-gray-800 hover:text-blue-400 cursor-pointer"
-                                        style={{ WebkitLineClamp: 2 }}
-                                        title={item.title}
-                                    >{item.title}
-                                    </div>
-                                </Link>
-                                <div className="flex -mt-3 p-0.5 w-full" style={{ color: 'rgb(154, 154, 167)' }}>
-                                    <div className="inline w-1/2">
-                                        <PlaySquareFilled className="mr-2" />
-                                        {convertNumber(item.play)}
-                                    </div>
-                                    <div className="inline w-1/2">
-                                        <ClockCircleFilled className="mr-2" />
-                                        {convertTime(item.created)}
+
+                                    <Link to={`/video/${video.bvid}`}>
+                                        <div
+                                            className="h-12 text-base overflow-hidden mt-2 text-gray-800 hover:text-blue-400 cursor-pointer"
+                                            title={video.title}
+                                        >{video.title}</div>
+                                    </Link>
+
+                                    <div className="flex p-0.5 w-full" style={{ color: 'rgb(154, 154, 167)' }}>
+                                        <div className="inline w-1/2">
+                                            <PlaySquareFilled className="mr-2" />
+                                            {convertNumber(video.play)}
+                                        </div>
+                                        <div className="inline w-1/2">
+                                            <ClockCircleFilled className="mr-2" />
+                                            {convertTime(video.created)}
+                                        </div>
                                     </div>
                                 </div>
-                            </Card>
-                        </List.Item>
-                    )}
-                />
-            </div>
+                            )
+                        })
+                    }
+                </div>
 
-            <div className="flex justify-center mt-6">
-                <Pagination
-                    current={page.current}
-                    total={page.total}
-                    onChange={() => onChange}
-                />
+                <div className="flex justify-center mt-6 pb-6 bg-white">
+                    <Pagination
+                        current={page}
+                        total={total}
+                        pageSize={30}
+                        showSizeChanger={false}
+                        showTitle={true}
+                        onChange={onChange}
+                    />
+                </div>
+
             </div>
 
         </div >
