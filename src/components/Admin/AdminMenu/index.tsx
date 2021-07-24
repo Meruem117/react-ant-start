@@ -20,25 +20,25 @@ const AdminMenu = () => {
     return (
         <Menu mode="inline" theme="dark" openKeys={openKeys} onOpenChange={onOpenChange} style={{ width: 256, height: '100%' }}>
             <Menu.Item key="首页" icon={<AntDesignOutlined />}>
-                <Link to="/home">首页</Link>
+                <Link to="/admin">首页</Link>
             </Menu.Item>
             <Menu.Item key="表格" icon={<TableOutlined />}>
-                <Link to="/home">表格</Link>
+                <Link to="/admin/table">表格</Link>
             </Menu.Item>
             <SubMenu key="分析" icon={<ProjectOutlined />} title="分析">
                 <Menu.Item key="MapReduce">
-                    <Link to="/home">MapReduce</Link>
+                    <Link to="/admin/mapreduce">MapReduce</Link>
                 </Menu.Item>
                 <Menu.Item key="Hive">
-                    <Link to="/home">Hive</Link>
+                    <Link to="/admin/hive">Hive</Link>
                 </Menu.Item>
             </SubMenu>
             <SubMenu key="可视化" icon={<SketchOutlined />} title="可视化">
                 <Menu.Item key="MCharts">
-                    <Link to="/home">MapReduce</Link>
+                    <Link to="/admin/mcharts">MapReduce</Link>
                 </Menu.Item>
                 <Menu.Item key="HCharts">
-                    <Link to="/home">Hive</Link>
+                    <Link to="/admin/hcharts">Hive</Link>
                 </Menu.Item>
             </SubMenu>
         </Menu>

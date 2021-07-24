@@ -4,6 +4,7 @@ import { Spin } from 'antd'
 import AdminMenu from './AdminMenu'
 
 const AdminHome = lazy(() => import('./AdminHome'))
+const Hive = lazy(() => import('./Analysis/Hive'))
 
 export default class Main extends Component {
     render() {
@@ -15,10 +16,13 @@ export default class Main extends Component {
                         <Spin />
                     </div>
                 }>
-                    <Switch>
-                        <Route path="/admin" component={AdminHome} />
-                        <Redirect to="/admin" />
-                    </Switch>
+                    <div className="flex w-full h-full pt-6 px-8">
+                        <Switch>
+                            <Route path="/admin/home" component={AdminHome} />
+                            <Route path="/admin/hive" component={Hive} />
+                            <Redirect to="/admin/home" />
+                        </Switch>
+                    </div>
                 </Suspense>
             </div>
         )

@@ -1,11 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class AdminHome extends Component {
-    render() {
-        return (
-            <div className="flex m-auto">
-                <h2>Hello, Admin</h2>
-            </div>
-        )
-    }
+export default function AdminHome() {
+    return (
+        <div className="flex m-auto">
+            <h1>Hello, Admin</h1>
+        </div>
+    )
 }

@@ -1,25 +1,17 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import { Menu } from 'antd'
 import { AntDesignOutlined, ReadOutlined, ContainerOutlined, ApiOutlined } from '@ant-design/icons'
 
-// interface propsType {
-//     current: string
-// }
-
-// interface stateType {
-//     current: string
-// }
-
-// class Nav extends Component<propsType, stateType> {
 export default class Nav extends Component {
-    // static propTypes = {
-    //     current: PropTypes.string.isRequired
-    // }
-    // static defaultProps = {
-    //     current: ''
-    // }
+    // 暂未使用props
+    static propTypes = {
+        current: PropTypes.string.isRequired
+    }
+    static defaultProps = {
+        current: ''
+    }
 
     state = {
         current: 'home'
