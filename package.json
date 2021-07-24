@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ant-design/charts": "^1.2.3",
     "@craco/craco": "^6.1.2",
     "@tailwindcss/postcss7-compat": "^2.2.4",
     "@testing-library/jest-dom": "^5.11.4",
