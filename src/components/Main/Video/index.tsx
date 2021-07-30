@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { videoItem } from '../../../model'
-import { getDetail } from '../../../service/main'
+import { videoItem } from '../../../models/main'
+import { getDetail } from '../../../services/main'
 import { convertNumber, convertTime } from '../../../utils'
 import { Spin } from 'antd'
 import { StopOutlined } from '@ant-design/icons'

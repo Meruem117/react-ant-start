@@ -1,7 +1,7 @@
 import React from 'react'
 import { Line } from '@ant-design/charts'
 
-export default function MChart1() {
+const MChart1: React.FC = () => {
     const data = [
         { year: '1991', value: 3 },
         { year: '1992', value: 4 },
@@ -12,7 +12,7 @@ export default function MChart1() {
         { year: '1997', value: 7 },
         { year: '1998', value: 9 },
         { year: '1999', value: 13 },
-    ];
+    ]
 
     const config = {
         data,
@@ -23,7 +23,10 @@ export default function MChart1() {
             size: 5,
             shape: 'diamond',
         },
-    };
-    return <Line {...config} />;
+    }
+
+    return (<Line {...config} />)
 }
+
+export default MChart1
 

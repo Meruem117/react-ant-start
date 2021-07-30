@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { ulistItem } from '../../../model'
-import { getUpList } from '../../../service/main'
+import { ulistItem } from '../../../models/main'
+import { getUpList } from '../../../services/main'
 import { List, Avatar, Spin } from 'antd'
 import { LinkOutlined } from '@ant-design/icons'
 

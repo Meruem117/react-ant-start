@@ -4,7 +4,7 @@ import { Menu } from 'antd'
 import { AntDesignOutlined, TableOutlined, ProjectOutlined, SketchOutlined } from '@ant-design/icons'
 const { SubMenu } = Menu
 
-const AdminMenu = () => {
+const AdminMenu: React.FC = () => {
 
     const RootSubKeys = ['首页', '表格', '分析', '可视化']
     const [openKeys, setOpenKeys] = useState(['首页'])
