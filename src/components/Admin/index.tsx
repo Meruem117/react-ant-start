@@ -5,6 +5,8 @@ import AdminMenu from './AdminMenu'
 
 const AdminHome = lazy(() => import('./AdminHome'))
 const Hive = lazy(() => import('./Analysis/Hive'))
+const MCharts = lazy(() => import('./Charts/MCharts'))
+const HCharts = lazy(() => import('./Charts/HCharts'))
 
 export default class Main extends Component {
     render() {
@@ -20,6 +22,8 @@ export default class Main extends Component {
                         <Switch>
                             <Route path="/admin/home" component={AdminHome} />
                             <Route path="/admin/hive" component={Hive} />
+                            <Route path="/admin/mcharts" component={MCharts} />
+                            <Route path="/admin/hcharts" component={HCharts} />
                             <Redirect to="/admin/home" />
                         </Switch>
                     </div>
