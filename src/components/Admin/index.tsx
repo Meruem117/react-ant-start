@@ -18,7 +18,7 @@ export default class Main extends Component {
                         <Spin />
                     </div>
                 }>
-                    <div className="flex w-full h-full pt-6 px-8">
+                    <div className="flex w-full h-full pt-6 px-8 overflow-auto">
                         <Switch>
                             <Route path="/admin/home" component={AdminHome} />
                             <Route path="/admin/hive" component={Hive} />

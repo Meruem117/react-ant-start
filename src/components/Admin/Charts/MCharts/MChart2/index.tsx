@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { InputNumber, Select, Spin } from 'antd'
-import { Column } from '@ant-design/charts'
+import { Rose } from '@ant-design/charts'
 import { mDataItem } from '../../../../../models/admin'
 import { getSingleDayCount, getMData } from '../../../../../services/admin'
 
@@ -8,10 +8,10 @@ interface propsType {
     timeList: string[]
 }
 
-const MChart1: React.FC<propsType> = (props) => {
+const MChart2: React.FC<propsType> = (props) => {
 
     const { Option } = Select
-    const type: number = 2   // bv号的类型
+    const type: number = 1   // 作者的类型
     const timeList: string[] = props.timeList
     const [time, setTime] = useState<string>('')
     const [num, setNum] = useState<number>(5)
@@ -46,21 +46,27 @@ const MChart1: React.FC<propsType> = (props) => {
         setNum(value)
     }
 
+    type pos = 'bottom'
+    const position: pos = 'bottom'
+
     const config = {
         data: chartData,
-        autoFit: true,
+        // autoFit: true,
+        height: 600,
         xField: 'name',
-        yField: 'count'
+        yField: 'count',
+        seriesField: 'type',
+        radius: 0.9,
+        legend: { position: position }
     }
 
     if (!loading && time) {
         return (
             <div className="flex flex-col space-y-5 w-4/5 p-2">
-                <div className="text-3xl font-bold tracking-wider">视频播放量</div>
-                <div className="text-2xl font-semibold tracking-wide">按视频分</div>
+                <div className="text-2xl font-semibold tracking-wide">按作者分</div>
                 <div className="flex space-x-4 text-lg">
                     <div>Top </div>
-                    <InputNumber min={1} max={40} defaultValue={num} onChange={onChange} />
+                    <InputNumber min={1} max={data.length} defaultValue={num} onChange={onChange} />
                     <div>日期: </div>
                     <Select defaultValue={time} style={{ width: 120 }} onChange={handleChange}>
                         {
@@ -71,7 +77,7 @@ const MChart1: React.FC<propsType> = (props) => {
                     </Select>
                     <div>总访问量: {count}</div>
                 </div>
-                <Column {...config} />
+                <Rose {...config} />
             </div>
         )
     } else {
@@ -81,8 +87,6 @@ const MChart1: React.FC<propsType> = (props) => {
             </div>
         )
     }
-
 }
 
-export default MChart1
-
+export default MChart2

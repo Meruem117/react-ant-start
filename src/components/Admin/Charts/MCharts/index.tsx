@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { Spin } from 'antd'
 import MChart1 from './MChart1'
+import MChart2 from './MChart2'
 import { getTimeList } from '../../../../services/admin'
 
 const MCharts: React.FC = () => {
@@ -11,20 +11,12 @@ const MCharts: React.FC = () => {
         getTimeList().then(res => setTime(res))
     }, [])
 
-    if (time) {
-        return (
-            <div className="w-full p-5">
-                <MChart1 timeList={time} />
-            </div>
-        )
-    } else {
-        return (
-            <div className="flex flex-col h-full w-full justify-center">
-                <Spin />
-            </div>
-        )
-    }
-
+    return (
+        <div className="flex flex-col space-y-8 w-full h-full p-5">
+            <MChart1 timeList={time} />
+            <MChart2 timeList={time} />
+        </div>
+    )
 }
 
 export default MCharts
