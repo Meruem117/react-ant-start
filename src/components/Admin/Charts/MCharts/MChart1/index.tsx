@@ -1,7 +1,22 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Line } from '@ant-design/charts'
+import { mDataItem } from '../../../../../models/admin'
+import { getSingleDayCount, getMData } from '../../../../../services/admin'
 
-const MChart1: React.FC = () => {
+interface propsType {
+    timeList: String[]
+}
+
+const MChart1: React.FC<propsType> = (props) => {
+
+    const timeList: String[] = props.timeList
+    const [count, setCount] = useState<number>(0)
+    const [data, setData] = useState<mDataItem[]>([])
+
+    useEffect(() => {
+
+    }, [])
+
     const data = [
         { year: '1991', value: 3 },
         { year: '1992', value: 4 },

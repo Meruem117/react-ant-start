@@ -5,7 +5,7 @@ import { convertNumber, convertTime } from '../../../utils'
 import { Spin } from 'antd'
 import { StopOutlined } from '@ant-design/icons'
 
-const Video = (props: any) => {
+const Video: React.FC = (props: any) => {
 
     const [video, setVideo] = useState<videoItem>({
         title: '',

@@ -5,7 +5,7 @@ import { getUpList } from '../../../services/main'
 import { List, Avatar, Spin } from 'antd'
 import { LinkOutlined } from '@ant-design/icons'
 
-const UpList = () => {
+const UpList: React.FC = () => {
 
     const [ulist, setUList] = useState<ulistItem[]>([])
     const [loading, setLoading] = useState<boolean>(true)

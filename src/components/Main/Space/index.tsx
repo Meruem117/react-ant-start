@@ -6,7 +6,7 @@ import { convertNumber, convertTime } from '../../../utils'
 import { Avatar, Pagination, Spin } from 'antd'
 import { PlaySquareFilled, ClockCircleFilled } from '@ant-design/icons'
 
-const VideoList = (props: any) => {
+const VideoList: React.FC = (props: any) => {
 
     const [up, setUp] = useState<ulistItem>({
         card: {

@@ -15,7 +15,8 @@ export async function getSingleDayCount(tm: string, name: string = '访问量'):
 }
 
 // 某一天的视频播放情况(每个视频播放量)，取前40个
-export async function getMData(tm: string, type: number = 2): Promise<mDataItem[]> {
+// type: 1-up主 2-bv号 3-用户地区
+export async function getMData(tm: string, type: number): Promise<mDataItem[]> {
     const response = await axios.get(`/api/getMResultByTypeAndTm?type=${type}&tm=${tm}`)
     const data: mDataItem[] = response.data
     const res: mDataItem[] = data.sort(function (a: mDataItem, b: mDataItem) {
