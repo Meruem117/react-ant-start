@@ -8,6 +8,8 @@ import { PlaySquareFilled, ClockCircleFilled } from '@ant-design/icons'
 
 const VideoList: React.FC = (props: any) => {
 
+    const { mid } = props.match.params
+
     const [up, setUp] = useState<ulistItem>({
         card: {
             mid: '',
@@ -27,7 +29,6 @@ const VideoList: React.FC = (props: any) => {
     const [page, setPage] = useState<number>(1)
     const [total, setTotal] = useState<number>(1)
     const [loading, setLoading] = useState<boolean>(true)
-    const { mid } = props.match.params
 
     useEffect(() => {
         getUpInfo(mid)

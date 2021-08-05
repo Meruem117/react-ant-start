@@ -7,6 +7,8 @@ import { StopOutlined } from '@ant-design/icons'
 
 const Video: React.FC = (props: any) => {
 
+    const { bvid } = props.match.params
+
     const [video, setVideo] = useState<videoItem>({
         title: '',
         pubdate: 0,
@@ -28,7 +30,6 @@ const Video: React.FC = (props: any) => {
         }
     })
     const [loading, setLoading] = useState<boolean>(true)
-    const { bvid } = props.match.params
 
     useEffect(() => {
         getDetail(bvid)
@@ -38,9 +39,11 @@ const Video: React.FC = (props: any) => {
     }, [bvid])
 
     if (loading) {
-        <div className="flex flex-col h-full w-full justify-center">
-            <Spin />
-        </div>
+        return (
+            <div className="flex flex-col h-full w-full justify-center">
+                <Spin />
+            </div>
+        )
     }
 
     return (

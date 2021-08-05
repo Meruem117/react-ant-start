@@ -3,7 +3,7 @@ import { mDataItem } from '../../models/admin'
 
 //* MapReduce
 // 时间列表(yyyy-MM-dd)
-export async function getTimeList(): Promise<String[]> {
+export async function getTimeList(): Promise<string[]> {
     const response = await axios.get(`/api/getDistinctTm`)
     return response.data
 }
