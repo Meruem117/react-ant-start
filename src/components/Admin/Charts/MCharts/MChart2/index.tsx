@@ -46,9 +46,6 @@ const MChart2: React.FC<propsType> = (props) => {
         setNum(value)
     }
 
-    // type pos = 'bottom'
-    // const position: pos = 'bottom'
-
     const config = {
         data: chartData,
         // autoFit: true,
