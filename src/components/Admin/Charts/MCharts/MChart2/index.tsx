@@ -46,8 +46,8 @@ const MChart2: React.FC<propsType> = (props) => {
         setNum(value)
     }
 
-    type pos = 'bottom'
-    const position: pos = 'bottom'
+    // type pos = 'bottom'
+    // const position: pos = 'bottom'
 
     const config = {
         data: chartData,
@@ -57,7 +57,7 @@ const MChart2: React.FC<propsType> = (props) => {
         yField: 'count',
         seriesField: 'type',
         radius: 0.9,
-        legend: { position: position }
+        legend: { position: 'bottom' as 'bottom' }
     }
 
     if (!loading && time) {
