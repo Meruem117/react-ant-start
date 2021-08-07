@@ -4,13 +4,13 @@ import { Rose } from '@ant-design/charts'
 import { mDataItem } from '../../../../../models/admin'
 import { getSingleDayCount, getMData } from '../../../../../services/admin'
 
+const { Option } = Select
 interface propsType {
     timeList: string[]
 }
 
 const MChart2: React.FC<propsType> = (props) => {
 
-    const { Option } = Select
     const type: number = 1   // 作者的类型
     const timeList: string[] = props.timeList
     const [time, setTime] = useState<string>('')

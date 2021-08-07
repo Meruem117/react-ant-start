@@ -78,7 +78,7 @@ const VideoList: React.FC = (props: any) => {
                             <Avatar size={64} src={up!.card.face} className="cursor-pointer" />
                         </a>
                     </div>
-                    <div className="flex flex-col h-full pb-1 justify-end tracking-wider">
+                    <div className="flex flex-col h-full justify-end tracking-wider">
                         <a href={`https://space.bilibili.com/${mid}`} target='_blank' rel='noreferrer'>
                             <p className="font-bold text-xl text-white">{up!.card.name}</p>
                         </a>

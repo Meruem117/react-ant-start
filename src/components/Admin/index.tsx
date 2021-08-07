@@ -4,7 +4,9 @@ import { Spin } from 'antd'
 import AdminMenu from './AdminMenu'
 
 const AdminHome = lazy(() => import('./AdminHome'))
+const Tables = lazy(() => import('./Tables'))
 const Hive = lazy(() => import('./Analysis/Hive'))
+const MapReduce = lazy(() => import('./Analysis/MapReduce'))
 const MCharts = lazy(() => import('./Charts/MCharts'))
 const HCharts = lazy(() => import('./Charts/HCharts'))
 
@@ -21,7 +23,9 @@ export default class Main extends Component {
                     <div className="flex w-full h-full pt-6 px-8 overflow-auto">
                         <Switch>
                             <Route path="/admin/home" component={AdminHome} />
+                            <Route path="/admin/tables" component={Tables} />
                             <Route path="/admin/hive" component={Hive} />
+                            <Route path="/admin/mapreduce" component={MapReduce} />
                             <Route path="/admin/mcharts" component={MCharts} />
                             <Route path="/admin/hcharts" component={HCharts} />
                             <Redirect to="/admin/home" />

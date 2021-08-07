@@ -5,9 +5,10 @@ import MChart2 from './MChart2'
 import MChart3 from './MChart3'
 import { getTimeList } from '../../../../services/admin'
 
+const { TabPane } = Tabs
+
 const MCharts: React.FC = () => {
 
-    const { TabPane } = Tabs
     const [time, setTime] = useState<string[]>([])
 
     useEffect(() => {

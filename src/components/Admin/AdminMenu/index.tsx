@@ -23,7 +23,7 @@ const AdminMenu: React.FC = () => {
                 <Link to="/admin">首页</Link>
             </Menu.Item>
             <Menu.Item key="表格" icon={<TableOutlined />}>
-                <Link to="/admin/table">表格</Link>
+                <Link to="/admin/tables">表格</Link>
             </Menu.Item>
             <SubMenu key="分析" icon={<ProjectOutlined />} title="分析">
                 <Menu.Item key="MapReduce">

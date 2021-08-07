@@ -4,13 +4,13 @@ import { Column } from '@ant-design/charts'
 import { mDataItem } from '../../../../../models/admin'
 import { getSingleDayCount, getMData } from '../../../../../services/admin'
 
+const { Option } = Select
 interface propsType {
     timeList: string[]
 }
 
 const MChart1: React.FC<propsType> = (props) => {
 
-    const { Option } = Select
     const type: number = 2   // bv号的类型
     const timeList: string[] = props.timeList
     const [time, setTime] = useState<string>('')
