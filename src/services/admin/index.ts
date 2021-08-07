@@ -9,7 +9,7 @@ export async function getTimeList(): Promise<string[]> {
 }
 
 // 某一天的视频播放总量
-export async function getSingleDayCount(tm: string, name: string = '访问量'): Promise<number> {
+export async function getSingleDayCount(tm: string, name: string): Promise<number> {
     const response = await axios.get(`/api/getMResultByNameAndTm?name=${name}&tm=${tm}`)
     return response.data.count
 }

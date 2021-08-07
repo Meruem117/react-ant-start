@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react'
+import { Tabs } from 'antd'
 import MChart1 from './MChart1'
 import MChart2 from './MChart2'
+import MChart3 from './MChart3'
 import { getTimeList } from '../../../../services/admin'
 
 const MCharts: React.FC = () => {
 
+    const { TabPane } = Tabs
     const [time, setTime] = useState<string[]>([])
 
     useEffect(() => {
@@ -12,9 +15,18 @@ const MCharts: React.FC = () => {
     }, [])
 
     return (
-        <div className="flex flex-col space-y-8 w-full h-full p-5">
-            <MChart1 timeList={time} />
-            <MChart2 timeList={time} />
+        <div className="flex flex-col space-y-8 w-full h-full pb-5">
+            <Tabs defaultActiveKey="1" tabPosition='left' size='large'>
+                <TabPane tab="视频" key="1" >
+                    <MChart1 timeList={time} />
+                </TabPane>
+                <TabPane tab="作者" key="2">
+                    <MChart2 timeList={time} />
+                </TabPane>
+                <TabPane tab="用户" key="3">
+                    <MChart3 timeList={time} />
+                </TabPane>
+            </Tabs>
         </div>
     )
 }

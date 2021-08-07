@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { InputNumber, Select, Spin } from 'antd'
-import { Column } from '@ant-design/charts'
+import { Select, Spin } from 'antd'
+import { WordCloud } from '@ant-design/charts'
 import { mDataItem } from '../../../../../models/admin'
 import { getSingleDayCount, getMData } from '../../../../../services/admin'
 
@@ -8,16 +8,15 @@ interface propsType {
     timeList: string[]
 }
 
-const MChart1: React.FC<propsType> = (props) => {
+const MChart3: React.FC<propsType> = (props) => {
 
     const { Option } = Select
-    const type: number = 2   // bv号的类型
+    const type: number = 3   // 用户地区的类型
     const timeList: string[] = props.timeList
     const [time, setTime] = useState<string>('')
-    const [num, setNum] = useState<number>(5)
-    const [count, setCount] = useState<number>(0)
+    const [login, setLogin] = useState<number>(0)
+    const [logout, setLogout] = useState<number>(0)
     const [data, setData] = useState<mDataItem[]>([])
-    const [chartData, setChartData] = useState<mDataItem[]>([])
     const [loading, setLoading] = useState<boolean>(true)
 
     useEffect(() => {
@@ -25,47 +24,40 @@ const MChart1: React.FC<propsType> = (props) => {
     }, [timeList])
 
     useEffect(() => {
-        getSingleDayCount(time, '访问量').then(res => setCount(res))
+        getSingleDayCount(time, '登录').then(res => setLogin(res))
+        getSingleDayCount(time, '未登录').then(res => setLogout(res))
         getMData(time, type).then(res => setData(res))
         setLoading(false)
     }, [time])
-
-    useEffect(() => {
-        const res = data.slice(0, num)
-        setChartData(res)
-        setLoading(false)
-    }, [num, data])
 
     const handleChange = (value: string): void => {
         setLoading(true)
         setTime(value)
     }
 
-    const onChange = (value: number): void => {
-        setLoading(true)
-        setNum(value)
-    }
-
     const config = {
-        data: chartData,
-        autoFit: true,
-        xField: 'name',
-        yField: 'count',
-        label: {
-            style: {
-                opacity: 0.6,
-                fontSize: 24
-            }
+        data: data,
+        wordField: 'name',
+        weightField: 'count',
+        colorField: 'name',
+        wordStyle: {
+            fontFamily: 'Verdana',
+            fontSize: [24, 80] as [24, 80],
+            rotation: 0
+        },
+        legend: { position: 'bottom' as 'bottom' },
+        interactions: [{ type: 'element-active' }],
+        state: { active: { style: { lineWidth: 3 } } },
+        random: function random() {
+            return 0.5
         }
     }
 
     if (!loading && time) {
         return (
             <div className="flex flex-col space-y-5 w-4/5 p-2">
-                <div className="text-2xl font-semibold tracking-wide">视频播放量</div>
+                <div className="text-2xl font-semibold tracking-wide">用户活跃度</div>
                 <div className="flex space-x-4 text-lg">
-                    <div>Top </div>
-                    <InputNumber min={1} max={40} defaultValue={num} onChange={onChange} />
                     <div>日期: </div>
                     <Select defaultValue={time} style={{ width: 120 }} onChange={handleChange}>
                         {
@@ -74,9 +66,10 @@ const MChart1: React.FC<propsType> = (props) => {
                             })
                         }
                     </Select>
-                    <div>总访问量: {count}</div>
+                    <div>登录: {login}</div>
+                    <div>未登录: {logout}</div>
                 </div>
-                <Column {...config} />
+                <WordCloud {...config} />
             </div>
         )
     } else {
@@ -86,8 +79,6 @@ const MChart1: React.FC<propsType> = (props) => {
             </div>
         )
     }
-
 }
 
-export default MChart1
-
+export default MChart3

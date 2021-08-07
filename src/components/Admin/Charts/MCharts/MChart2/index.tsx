@@ -25,7 +25,7 @@ const MChart2: React.FC<propsType> = (props) => {
     }, [timeList])
 
     useEffect(() => {
-        getSingleDayCount(time).then(res => setCount(res))
+        getSingleDayCount(time, '访问量').then(res => setCount(res))
         getMData(time, type).then(res => setData(res))
         setLoading(false)
     }, [time])
@@ -48,19 +48,33 @@ const MChart2: React.FC<propsType> = (props) => {
 
     const config = {
         data: chartData,
-        // autoFit: true,
         height: 600,
         xField: 'name',
         yField: 'count',
-        seriesField: 'type',
+        seriesField: 'name',
         radius: 0.9,
-        legend: { position: 'bottom' as 'bottom' }
+        state: {
+            active: {
+                style: {
+                    lineWidth: 0,
+                    fillOpacity: 0.65,
+                },
+            },
+        },
+        legend: { position: 'bottom' as 'bottom' },
+        interactions: [{ type: 'element-active' }],
+        label: {
+            style: {
+                opacity: 0.8,
+                fontSize: 18
+            }
+        }
     }
 
     if (!loading && time) {
         return (
             <div className="flex flex-col space-y-5 w-4/5 p-2">
-                <div className="text-2xl font-semibold tracking-wide">按作者分</div>
+                <div className="text-2xl font-semibold tracking-wide">作者播放量</div>
                 <div className="flex space-x-4 text-lg">
                     <div>Top </div>
                     <InputNumber min={1} max={data.length} defaultValue={num} onChange={onChange} />
