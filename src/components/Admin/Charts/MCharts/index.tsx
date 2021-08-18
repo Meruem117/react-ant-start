@@ -16,8 +16,8 @@ const MCharts: React.FC = () => {
     }, [])
 
     return (
-        <div className="flex flex-col space-y-8 w-full h-full pb-5">
-            <Tabs defaultActiveKey="1" tabPosition='left' size='large'>
+        <div className="flex flex-col space-y-8 w-full h-full pb-12">
+            <Tabs defaultActiveKey="1" tabPosition='top' size='large'>
                 <TabPane tab="视频" key="1" >
                     <MChart1 timeList={time} />
                 </TabPane>

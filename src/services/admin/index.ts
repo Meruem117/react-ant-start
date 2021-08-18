@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { mDataItem } from '../../models/admin'
+import { upTableItem, mDataItem, hDataItem1, hDataByYear, hDataByMonth, hDataItem2, hDataItem3 } from '../../models/admin'
 
 //* MapReduce
 // 时间列表(yyyy-MM-dd)
@@ -23,4 +23,54 @@ export async function getMData(tm: string, type: number): Promise<mDataItem[]> {
         return b.count - a.count
     }).slice(0, 40)
     return res
+}
+
+//* Hive
+// 视频数
+export async function getHiveData1(): Promise<hDataItem1[]> {
+    const response = await axios.get(`/api/getHResult2`)
+    return response.data
+}
+
+//* 以下2个函数功能可用@antv/data-set替代
+export async function getHiveDataByYear(): Promise<hDataByYear[]> {
+    const resp = await getHiveData1()
+    const res: hDataByYear[] = resp.map(item => {
+        return {
+            author: item.author,
+            year: item.tm.slice(0, 4),
+            count: item.count
+        }
+    })
+    return res
+}
+
+export async function getHiveDataByMonth(): Promise<hDataByMonth[]> {
+    const resp = await getHiveData1()
+    const res: hDataByMonth[] = resp.map(item => {
+        return {
+            author: item.author,
+            month: item.tm.slice(5, 7),
+            count: item.count
+        }
+    })
+    return res
+}
+
+// 播放量
+export async function getHiveData2(): Promise<hDataItem2[]> {
+    const response = await axios.get(`/api/getHResult4`)
+    return response.data
+}
+
+// 热度
+export async function getHiveData3(): Promise<hDataItem3[]> {
+    const response = await axios.get(`/api/getHResult3`)
+    return response.data
+}
+
+//* Table
+export async function getUpTable(): Promise<upTableItem[]> {
+    const response = await axios.get(`/api/getUp`)
+    return response.data
 }

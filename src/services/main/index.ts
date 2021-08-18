@@ -18,13 +18,12 @@ export async function getUpList(): Promise<ulistItem[]> {
     const ulist: ulistItem[] = []
     getUp()
         .then(ups =>
-            ups.map(up => {
+            ups.forEach(up => {
                 getUpInfo(up.mid)
                     .then(res => {
                         ulist.push(res)
                     })
                     .catch(error => console.error(error))
-                return up
             })
         )
         .catch(error => console.error(error))

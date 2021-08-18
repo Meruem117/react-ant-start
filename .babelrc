@@ -2,7 +2,6 @@
     "presets": [
         "react-app"
     ],
-    // 开发环境下配置项
     "env": {
         "development": {
             "plugins": [

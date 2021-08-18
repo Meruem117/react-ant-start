@@ -1,1 +1,6 @@
 @import '~antd/dist/antd.css';
+
+/* ant-tabs默认为overflow:hidden */
+.ant-tabs {
+    overflow: auto;
+}
