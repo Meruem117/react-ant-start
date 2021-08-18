@@ -3,8 +3,8 @@ import { Column, Radar, Line } from '@ant-design/charts'
 import { DataSet } from '@antv/data-set'
 import { hDataItem1 } from '../../../../../models/admin'
 import { getHiveData1 } from '../../../../../services/admin'
-// import { hDataItem1, hDataByYear, hDataByMonth } from '../../../../../models/admin'
-// import { getHiveData1, getHiveDataByYear, getHiveDataByMonth } from '../../../../../services/admin'
+// import { hDataByYear, hDataByMonth } from '../../../../../models/admin'
+// import { getHiveDataByYear, getHiveDataByMonth } from '../../../../../services/admin'
 
 const HChart1: React.FC = () => {
 
