@@ -28,6 +28,15 @@ export interface hDataByMonth {
 
 export interface hDataItem2 {
     process_date: string,
+    author: string,
+    bvid: string,
+    title: string,
+    play: number,
+    tm: string
+}
+
+export interface hDataItem3 {
+    process_date: string,
     bvid: string,
     mid: string,
     title: string,
@@ -36,15 +45,6 @@ export interface hDataItem2 {
     play: number,
     review: number,
     score: number
-}
-
-export interface hDataItem3 {
-    process_date: string,
-    author: string,
-    bvid: string,
-    title: string,
-    play: number,
-    tm: string
 }
 
 //* Table
