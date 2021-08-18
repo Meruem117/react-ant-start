@@ -29,7 +29,7 @@ const HChart1: React.FC = () => {
     dvColumn.transform({
         type: 'map',
         callback(row: hDataItem1) {
-            row.tm = row.tm.slice(0, 5)
+            row.tm = row.tm.slice(0, 4)
             return row
         }
     })
@@ -46,7 +46,7 @@ const HChart1: React.FC = () => {
         isStack: true,
         label: {
             position: 'middle' as 'middle'
-        },
+        }
     }
 
     const dvRader = new DataView().source(data)
