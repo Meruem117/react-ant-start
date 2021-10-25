@@ -5,12 +5,12 @@ import { mDataItem } from '../../../../../models/admin'
 import { getSingleDayCount, getMData } from '../../../../../services/admin'
 
 const { Option } = Select
+
 interface propsType {
     timeList: string[]
 }
 
 const MChart3: React.FC<propsType> = (props) => {
-
     const type: number = 3   // 用户地区的类型
     const timeList: string[] = props.timeList
     const [time, setTime] = useState<string>('')

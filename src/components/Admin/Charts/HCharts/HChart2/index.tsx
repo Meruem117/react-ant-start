@@ -5,7 +5,6 @@ import { hDataItem2 } from '../../../../../models/admin'
 import { getHiveData2 } from '../../../../../services/admin'
 
 const HChart2: React.FC = () => {
-
     const { DataView } = DataSet
     const [data, setData] = useState<hDataItem2[]>([])
 

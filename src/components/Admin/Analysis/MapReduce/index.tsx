@@ -2,6 +2,7 @@ import React from 'react'
 import { Steps, Popover, Button, message } from 'antd'
 
 const { Step } = Steps
+
 interface propsType {
     text: string
 }
@@ -49,13 +50,10 @@ const customDot = (dot: any, { status, index }: any) => (
 )
 
 const MapReduce: React.FC = () => {
-
     const [current, setCurrent] = React.useState(0)
-
     const next = (): void => {
         setCurrent(current + 1)
     }
-
     const prev = (): void => {
         setCurrent(current - 1)
     }

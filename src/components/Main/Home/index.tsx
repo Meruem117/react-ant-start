@@ -5,7 +5,7 @@ import { Button } from 'antd'
 export default function Home() {
     return (
         <div className="flex w-full h-full">
-            <Link to="/space/316826335" className="mx-auto my-auto">
+            <Link to="/list" className="mx-auto my-auto">
                 <Button
                     type="primary"
                     className="text-lg tracking-wider"

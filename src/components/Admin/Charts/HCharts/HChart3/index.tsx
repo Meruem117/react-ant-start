@@ -5,7 +5,6 @@ import { getHiveData3 } from '../../../../../services/admin'
 import { convertNumber } from '../../../../../utils'
 
 const HChart3: React.FC = () => {
-
     const [data, setData] = useState<hDataItem3[]>([])
 
     useEffect(() => {

@@ -3,26 +3,15 @@ import { Column, Radar, Line } from '@ant-design/charts'
 import { DataSet } from '@antv/data-set'
 import { hDataItem1 } from '../../../../../models/admin'
 import { getHiveData1 } from '../../../../../services/admin'
-// import { hDataByYear, hDataByMonth } from '../../../../../models/admin'
-// import { getHiveDataByYear, getHiveDataByMonth } from '../../../../../services/admin'
 
 const HChart1: React.FC = () => {
-
     const { DataView } = DataSet
     const [data, setData] = useState<hDataItem1[]>([])
-    // const [yearData, setYearData] = useState<hDataByYear[]>([])
-    // const [monthData, setMonthData] = useState<hDataByMonth[]>([])
 
     useEffect(() => {
         getHiveData1()
             .then(res => setData(res))
             .catch(error => console.error(error))
-        // getHiveDataByYear()
-        //     .then(res => setYearData(res))
-        //     .catch(error => console.error(error))
-        // getHiveDataByMonth()
-        //     .then(res => setMonthData(res))
-        //     .catch(error => console.error(error))
     }, [])
 
     const dvColumn = new DataView().source(data)

@@ -4,10 +4,9 @@ import HChart1 from './HChart1'
 import HChart2 from './HChart2'
 import HChart3 from './HChart3'
 
+const { TabPane } = Tabs
+
 const HCharts: React.FC = () => {
-
-    const { TabPane } = Tabs
-
     return (
         <div className="flex flex-col space-y-8 w-full h-full pb-12">
             <Tabs defaultActiveKey="1" tabPosition='top' size='large'>

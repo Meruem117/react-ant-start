@@ -5,7 +5,6 @@ import { upTableItem } from '../../../models/admin'
 import { getUpTable } from '../../../services/admin'
 
 const Tables: React.FC = () => {
-
     const [upTable, setUpTable] = useState<upTableItem[]>([])
 
     useEffect(() => {

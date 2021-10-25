@@ -22,7 +22,7 @@ export default class Nav extends Component {
     }
 
     render() {
-        const { current } = this.state;
+        const { current } = this.state
         return (
             <div className="h-14 w-full flex fixed top-0 justify-start pt-2 pl-2 shadow-xl bg-white z-10">
                 <Menu onClick={this.handleClick} selectedKeys={[current]} mode="horizontal">

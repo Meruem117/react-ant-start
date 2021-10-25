@@ -2,18 +2,18 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Menu } from 'antd'
 import { AntDesignOutlined, TableOutlined, ProjectOutlined, SketchOutlined } from '@ant-design/icons'
+
 const { SubMenu } = Menu
 
 const AdminMenu: React.FC = () => {
-
-    const RootSubKeys = ['首页', '表格', '分析', '可视化']
     const [openKeys, setOpenKeys] = useState(['首页'])
-    const onOpenChange = (keys: any) => {
-        const latestOpenKey = keys.find((key: string) => openKeys.indexOf(key) === -1);
+    const RootSubKeys = ['首页', '表格', '分析', '可视化']
+    const onOpenChange = (keys: any): void => {
+        const latestOpenKey = keys.find((key: string) => openKeys.indexOf(key) === -1)
         if (RootSubKeys.indexOf(latestOpenKey) === -1) {
-            setOpenKeys(keys);
+            setOpenKeys(keys)
         } else {
-            setOpenKeys(latestOpenKey ? [latestOpenKey] : []);
+            setOpenKeys(latestOpenKey ? [latestOpenKey] : [])
         }
     }
 

@@ -8,7 +8,6 @@ import { StopOutlined } from '@ant-design/icons'
 const Video: React.FC = (props: any) => {
 
     const { bvid } = props.match.params
-
     const [video, setVideo] = useState<videoItem>({
         title: '',
         pubdate: 0,
