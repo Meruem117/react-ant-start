@@ -71,13 +71,13 @@ const Video: React.FC = (props: any) => {
                 <div
                     className="flex justify-start p-1 mt-3 h-auto w-full border-b border-solid border-t-0 border-l-0 border-r-0 border-gray-200"
                 >
-                    <img src="../../assets/icon/like.png" className="icon" alt="点赞" />
+                    <img src="../../assets/icons/like.png" className="icon" alt="点赞" />
                     <p className="icon_text">{convertNumber(video.stat.like)}</p>
-                    <img src="../../assets/icon/coin.png" className="icon" alt="投币" />
+                    <img src="../../assets/icons/coin.png" className="icon" alt="投币" />
                     <p className="icon_text">{convertNumber(video.stat.coin)}</p>
-                    <img src="../../assets/icon/favorite.png" className="icon" alt="收藏" />
+                    <img src="../../assets/icons/favorite.png" className="icon" alt="收藏" />
                     <p className="icon_text">{convertNumber(video.stat.favorite)}</p>
-                    <img src="../../assets/icon/share.png" className="icon" alt="转发" />
+                    <img src="../../assets/icons/share.png" className="icon" alt="转发" />
                     <p className="icon_text">{convertNumber(video.stat.share)}</p>
                 </div>
                 <div className="mt-3 text-left ml-2 w-full">

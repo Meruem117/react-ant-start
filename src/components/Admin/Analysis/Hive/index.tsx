@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import ReactMarkdown from 'react-markdown'
-import md from '../../../../assets/Hive.md'
+import md from '../../../../assets/docs/Hive.md'
 
 const Hive: React.FC = () => {
     const [content, setContent] = useState<string>('')
