@@ -32,22 +32,22 @@ export interface vlistItem {
 }
 
 export interface videoItem {
-    title: '',
-    pubdate: 0,
-    desc: '',
+    title: string,
+    pubdate: number,
+    desc: string,
     owner: {
-        mid: '',
-        name: '',
-        face: ''
+        mid: string,
+        name: string,
+        face: string
     },
     stat: {
-        view: 0,
-        danmaku: 0,
-        reply: 0,
-        favorite: 0,
-        coin: 0,
-        share: 0,
-        like: 0,
-        his_rank: 0
+        view: number,
+        danmaku: number,
+        reply: number,
+        favorite: number,
+        coin: number,
+        share: number,
+        like: number,
+        his_rank: number
     }
 }

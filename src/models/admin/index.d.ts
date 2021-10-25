@@ -1,4 +1,3 @@
-//* MapReduce
 export interface mDataItem {
     name: string,
     type: number,
@@ -6,7 +5,6 @@ export interface mDataItem {
     tm: string
 }
 
-//* Hive
 export interface hDataItem1 {
     process_date: string,
     author: string,
@@ -47,7 +45,6 @@ export interface hDataItem3 {
     score: number
 }
 
-//* Table
 export interface upTableItem {
     id: number,
     mid: string,
