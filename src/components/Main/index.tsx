@@ -1,8 +1,8 @@
 import React, { Component, lazy, Suspense } from 'react'
 import { Route, Switch, Redirect } from 'react-router-dom'
+import { Spin } from 'antd'
 import Nav from './Nav'
 import Footer from './Footer'
-import { Spin } from 'antd'
 
 const Home = lazy(() => import('./Home'))
 const About = lazy(() => import('./About'))
