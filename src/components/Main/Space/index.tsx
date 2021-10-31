@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { ulistItem, vlistItem } from '../../../models/main'
-import { getUpInfo, getVideos } from '../../../services/main'
-import { convertNumber, convertTime } from '../../../utils'
 import { Avatar, Pagination, Spin } from 'antd'
 import { PlaySquareFilled, ClockCircleFilled } from '@ant-design/icons'
+import { ulistItem, vlistItem } from '@/models/main'
+import { getUpInfo, getVideos } from '@/services/main'
+import { convertNumber, convertTime } from '@/utils'
 
 const VideoList: React.FC = (props: any) => {
-
     const { mid } = props.match.params
     const [up, setUp] = useState<ulistItem>({
         card: {

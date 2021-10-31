@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { ulistItem } from '../../../models/main'
-import { getUpList } from '../../../services/main'
 import { List, Avatar, Spin } from 'antd'
 import { LinkOutlined } from '@ant-design/icons'
+import { ulistItem } from '@/models/main'
+import { getUpList } from '@/services/main'
 
 const UpList: React.FC = () => {
-
     const [ulist, setUList] = useState<ulistItem[]>([])
     const [loading, setLoading] = useState<boolean>(true)
 
