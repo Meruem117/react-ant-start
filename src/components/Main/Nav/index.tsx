@@ -5,7 +5,7 @@ import { Menu } from 'antd'
 import { AntDesignOutlined, ReadOutlined, ContainerOutlined, ApiOutlined } from '@ant-design/icons'
 
 export default class Nav extends Component {
-    // 暂未使用props
+    //? not in use
     static propTypes = {
         current: PropTypes.string.isRequired
     }
