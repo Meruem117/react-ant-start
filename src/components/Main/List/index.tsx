@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { List, Avatar, Spin } from 'antd'
+import { List, Avatar, Button, Spin, BackTop } from 'antd'
 import { LinkOutlined } from '@ant-design/icons'
 import { upInfoItem } from '@/models/up'
 import { getUps, getUpInfo } from '@/services/up'
@@ -16,7 +16,7 @@ const UpList: React.FC = () => {
         getUpList(current)
             .then(() => setLoading(false))
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [current])
 
     const getUpList = async (page: number): Promise<void> => {
         if (hasMore) {
@@ -32,9 +32,8 @@ const UpList: React.FC = () => {
         return
     }
 
-    const load = (): void => {
+    const loadMore = (): void => {
         setCurrent(current + 1)
-        getUpList(current - 1)
     }
 
     if (loading) {
@@ -80,6 +79,8 @@ const UpList: React.FC = () => {
                     </List.Item>
                 )}
             />
+            <Button type="primary" onClick={loadMore}>Load More</Button>
+            <BackTop />
         </div>
     )
 }
