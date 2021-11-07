@@ -7,7 +7,7 @@ import { getUps, getUpInfo } from '@/services/up'
 import { UP_LIST_SIZE } from '@/constant'
 
 const UpList: React.FC = () => {
-    const [upList, setUpList] = useState<upInfoItem[]>([])
+    const [upList] = useState<upInfoItem[]>([])
     const [current, setCurrent] = useState<number>(0)
     const [hasMore, setHasMore] = useState<boolean>(true)
     const [loading, setLoading] = useState<boolean>(true)
