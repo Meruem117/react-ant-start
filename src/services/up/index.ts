@@ -7,6 +7,11 @@ export async function getUps(start: number, size: number = UP_LIST_SIZE): Promis
     return response.data
 }
 
+export async function getAllUps(): Promise<upItem[]> {
+    const response = await axios.get('/api/up/all')
+    return response.data
+}
+
 export async function addUp(up: upItem): Promise<number> {
     const response = await axios.post('/api/up/add', up)
     return response.data.id

@@ -13,8 +13,9 @@ const UpList: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(true)
 
     useEffect(() => {
+        setLoading(true)
         getUpList(current)
-            .then(() => setLoading(false))
+        setLoading(false)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [current])
 
