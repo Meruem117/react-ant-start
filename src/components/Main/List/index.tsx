@@ -22,20 +22,26 @@ const UpList: React.FC = () => {
     const getUpList = async (page: number): Promise<void> => {
         if (hasMore) {
             const ups = await getUps(page)
-            ups.forEach(up => {
-                getUpInfo(up.mid)
-                    .then(res => setUpList([...upList, res]))
-            })
             if (ups.length < UP_LIST_SIZE) {
                 setHasMore(false)
             }
+            ups.forEach(up => {
+                getUpInfo(up.mid)
+                    .then(res => upList.push(res))
+            })
         }
-        return
     }
 
-    const loadMore = (): void => {
+    const onLoadMore = (): void => {
         setCurrent(current + 1)
     }
+
+    const loadMore =
+        hasMore ? (
+            <div className='text-center mt-3 h-8'>
+                <Button onClick={onLoadMore}>Load More</Button>
+            </div>
+        ) : (<div className='text-left mt-2 pl-2 h-8 text-gray-400 text-lg'>No More Data</div>)
 
     if (loading) {
         return (
@@ -50,23 +56,24 @@ const UpList: React.FC = () => {
             <List
                 itemLayout="horizontal"
                 dataSource={upList}
-                renderItem={item => (
+                loadMore={loadMore}
+                renderItem={up => (
                     <List.Item>
                         <List.Item.Meta
                             avatar={
-                                <Link to={`/space/${item.mid}`}>
-                                    <Avatar size={64} src={item.face} className="cursor-pointer" />
+                                <Link to={`/space/${up.mid}`}>
+                                    <Avatar size={64} src={up.face} className="cursor-pointer" />
                                 </Link>
                             }
                             title={
                                 <div className="flex h-8">
-                                    <Link to={`/space/${item.mid}`}>
+                                    <Link to={`/space/${up.mid}`}>
                                         <p
                                             className="text-2xl tracking-wider cursor-pointer text-gray-800 hover:text-blue-400"
-                                        >{item.name}</p>
+                                        >{up.name}</p>
                                     </Link>
                                     <a
-                                        href={`https://space.bilibili.com/${item.mid}`}
+                                        href={`https://space.bilibili.com/${up.mid}`}
                                         target="_blank"
                                         rel="noreferrer"
                                         className="inline p-2 cursor-pointer"
@@ -75,12 +82,11 @@ const UpList: React.FC = () => {
                                     </a>
                                 </div>
                             }
-                            description={item.Official.title}
+                            description={up.Official.title}
                         />
                     </List.Item>
                 )}
             />
-            <Button type="primary" onClick={loadMore}>Load More</Button>
             <BackTop />
         </div>
     )
