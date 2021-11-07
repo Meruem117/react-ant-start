@@ -5,7 +5,9 @@ module.exports = function (app) {
         proxy('/api', {
             target: 'http://localhost:8080',
             changeOrigin: true,
-            rewrite: (path) => path.replace(/^\/api/, '')
+            pathRewrite: {
+                '^/api': ''
+            }
         }),
         proxy('/card', {
             target: 'https://api.bilibili.com/x/web-interface', //mid
