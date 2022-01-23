@@ -1,4 +1,4 @@
-import React, { Component, lazy, Suspense } from 'react'
+import React, { Component, lazy, Suspense, Fragment } from 'react'
 import { Route, Switch, Redirect } from 'react-router-dom'
 import { Spin } from 'antd'
 import Nav from './Nav'
@@ -14,7 +14,7 @@ const Admin = lazy(() => import('../Admin'))
 export default class Main extends Component {
     render() {
         return (
-            <>
+            <Fragment>
                 <Nav />
                 <div className="h-screen w-full pt-16">
                     <Suspense fallback={
@@ -34,7 +34,7 @@ export default class Main extends Component {
                     </Suspense>
                 </div>
                 <Footer />
-            </>
+            </Fragment>
         )
     }
 }

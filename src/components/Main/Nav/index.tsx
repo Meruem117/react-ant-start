@@ -1,19 +1,10 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import PropTypes from 'prop-types'
 import { Menu } from 'antd'
 import { AntDesignOutlined, ReadOutlined, ContainerOutlined, ApiOutlined } from '@ant-design/icons'
 import User from './User'
 
 export default class Nav extends Component {
-    //? not in use
-    static propTypes = {
-        current: PropTypes.string.isRequired
-    }
-    static defaultProps = {
-        current: ''
-    }
-
     state = {
         current: 'home'
     }
