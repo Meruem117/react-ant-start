@@ -1,4 +1,4 @@
-function BaseReducer(state: any = { data: 0 }, action: any) {
+function BaseReducer(state: any = 0, action: any) {
   const { type } = action
   switch (type) {
     case 'login':
