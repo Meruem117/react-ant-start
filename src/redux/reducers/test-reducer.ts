@@ -1,6 +1,6 @@
 import { ADD, MINUS } from '../types'
 
-function BaseReducer(state: any = 0, action: any) {
+function TestReducer(state: any = 0, action: any) {
   const { type } = action
   switch (type) {
     case ADD:
@@ -12,4 +12,4 @@ function BaseReducer(state: any = 0, action: any) {
   }
 }
 
-export default BaseReducer
+export default TestReducer
