@@ -1,8 +1,8 @@
 import React from 'react'
-import TestContainer from '@/containers/Test'
+import Test2 from './Test2'
 
 const Test: React.FC = () => {
-  return <TestContainer />
+  return <Test2 />
 }
 
 export default Test

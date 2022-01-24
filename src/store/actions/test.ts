@@ -1,5 +1,5 @@
-import { Dispatch } from 'redux'
-import { ADD, MINUS } from '../types'
+import type { Dispatch } from 'redux'
+import { ADD, MINUS } from '@/constant'
 
 export const createAddAction = () => ({ type: ADD })
 export const createMinusAction = () => ({ type: MINUS })

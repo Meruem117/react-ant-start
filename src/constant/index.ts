@@ -18,3 +18,11 @@ export const BASE_HDFS_OUTPUT_PATH = '/project/output/'
 export const BASE_LOCAL_LOG_PATH = '/opt/data/project/log'
 // hive
 export const HIVE_DOC_PATH = '/src/assets/docs/Hive.md'
+
+//* types
+// test
+export const ADD = 'add'
+export const MINUS = 'minus'
+// login
+export const LOGIN = 'login'
+export const LOGOUT = 'logout'

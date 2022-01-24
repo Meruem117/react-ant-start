@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from 'antd'
-import store from '@/redux/store'
-import { createAddAction, createMinusAction, createAddAsyncAction } from '@/redux/actions/test-action'
+import store from '@/store'
+import { createAddAction, createMinusAction, createAddAsyncAction } from '@/store/actions/test'
 
 const Test1: React.FC = () => {
   const clickAdd = () => {

@@ -1,5 +1,8 @@
 import React from 'react'
 import { Button } from 'antd'
+import { connect } from 'react-redux'
+import { createAddAction, createMinusAction } from '@/store/actions/test'
+import type { storeType } from '@/models/base'
 
 type propsType = {
   count: number,
@@ -28,4 +31,10 @@ const Test2: React.FC<propsType> = (props) => {
   )
 }
 
-export default Test2
+export default connect(
+  (state: storeType) => ({ count: state.test.count }),
+  {
+    add: createAddAction,
+    minus: createMinusAction
+  }
+)(Test2)
