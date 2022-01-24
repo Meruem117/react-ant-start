@@ -1,16 +1,12 @@
-function BaseReducer(state: any = false, action: any) {
+function BaseReducer(state: any = { data: 0 }, action: any) {
   const { type } = action
   switch (type) {
     case 'login':
-      return Object.assign({}, state, {
-        isLogin: true
-      })
+      return state.data + 1
     case 'logout':
-      return Object.assign({}, state, {
-        isLogin: false
-      })
+      return state.data - 1
     default:
-      return state
+      return state.data
   }
 }
 

@@ -4,21 +4,25 @@ import { UserOutlined } from '@ant-design/icons'
 import store from '@/redux/store'
 
 const User: React.FC = () => {
-  const click = () => {
-    store.dispatch({ type: 'login', data: 0 })
+  const clickAdd = () => {
+    store.dispatch({ type: 'login' })
+  }
+
+  const clickMinus = () => {
+    store.dispatch({ type: 'logout' })
   }
 
   const content = (
     <div>
-      {
-        store.getState() ? <p>True</p> : <p>False</p>
-      }
+      <p>Content</p>
     </div>
   )
 
   return (
     <div className='flex px-4'>
-      <Button type='primary' onClick={click}>Click</Button>
+      <div>{store.getState()}</div>
+      <Button type='primary' onClick={clickAdd}>Click</Button>
+      <Button type='primary' onClick={clickMinus}>Click</Button>
       <Popover placement='topLeft' content={content} title='Title'>
         <Avatar className='cursor-pointer' size="large" icon={<UserOutlined />} />
       </Popover>
