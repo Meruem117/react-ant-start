@@ -2,14 +2,19 @@ import React from 'react'
 import { Avatar, Button, Popover } from 'antd'
 import { UserOutlined } from '@ant-design/icons'
 import store from '@/redux/store'
+import { createAddAction, createMinusAction, createAddAsyncAction } from '@/redux/actions/base-action'
 
 const User: React.FC = () => {
   const clickAdd = () => {
-    store.dispatch({ type: 'login' })
+    store.dispatch(createAddAction())
   }
 
   const clickMinus = () => {
-    store.dispatch({ type: 'logout' })
+    store.dispatch(createMinusAction())
+  }
+
+  const clickAsync = () => {
+    store.dispatch(createAddAsyncAction(1500))
   }
 
   const content = (
@@ -21,8 +26,9 @@ const User: React.FC = () => {
   return (
     <div className='flex px-4'>
       <div>{store.getState()}</div>
-      <Button type='primary' onClick={clickAdd}>Click</Button>
-      <Button type='primary' onClick={clickMinus}>Click</Button>
+      <Button type='primary' onClick={clickAdd}>Add</Button>
+      <Button type='primary' onClick={clickMinus}>Minus</Button>
+      <Button type='primary' onClick={clickAsync}>Async</Button>
       <Popover placement='topLeft' content={content} title='Title'>
         <Avatar className='cursor-pointer' size="large" icon={<UserOutlined />} />
       </Popover>

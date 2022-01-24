@@ -1,12 +1,14 @@
+import { ADD, MINUS } from '../types'
+
 function BaseReducer(state: any = 0, action: any) {
   const { type } = action
   switch (type) {
-    case 'login':
-      return state.data + 1
-    case 'logout':
-      return state.data - 1
+    case ADD:
+      return state + 1
+    case MINUS:
+      return state - 1
     default:
-      return state.data
+      return state
   }
 }
 
