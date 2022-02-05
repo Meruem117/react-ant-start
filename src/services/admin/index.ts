@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { upTableItem, mDataItem, hDataItem1, hDataByYear, hDataByMonth, hDataItem2, hDataItem3 } from '../../models/admin'
+import type { upTableItem, mDataItem, hDataItem1, hDataByYear, hDataByMonth, hDataItem2, hDataItem3 } from '../../models/admin'
 
 //* MapReduce
 // 时间列表(yyyy-MM-dd)

@@ -1,4 +1,4 @@
-function roundFun(value: number, n: number): number {
+export function roundFun(value: number, n: number): number {
     return Math.round(value * Math.pow(10, n)) / Math.pow(10, n)
 }
 

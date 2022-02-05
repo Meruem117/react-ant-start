@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { videoItem, videoDetailItem } from '@/models/video'
+import type { videoItem, videoDetailItem } from '@/models/video'
 
 export async function getVideos(mid: string, page: number): Promise<videoItem[]> {
     const response = await axios.get(`/search?mid=${mid}&ps=30&tid=0&pn=${page}&keyword=&order=pubdate&jsonp=jsonp`)

@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 import { Avatar, Popover } from 'antd'
 import { UserOutlined } from '@ant-design/icons'
 
 const User: React.FC = () => {
-  const content = (
+  const content: ReactElement = (
     <div>
       <p>Content</p>
     </div>

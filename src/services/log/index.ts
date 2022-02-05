@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { logItem } from '@/models/log'
+import type { logItem } from '@/models/log'
 import { DEFAULT_LOCATION } from '@/constant'
 
 export function addLog(log: logItem): void {

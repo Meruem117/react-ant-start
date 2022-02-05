@@ -10,33 +10,31 @@ const List = lazy(() => import('./List'))
 const Space = lazy(() => import('./Space'))
 const Video = lazy(() => import('./Video'))
 const Admin = lazy(() => import('../Admin'))
-const Test = lazy(() => import('../Test'))
 
 export default class Main extends Component {
-    render() {
-        return (
-            <Fragment>
-                <Nav />
-                <div className="h-screen w-full pt-16">
-                    <Suspense fallback={
-                        <div className="flex flex-col h-full w-full justify-center">
-                            <Spin />
-                        </div>
-                    }>
-                        <Switch>
-                            <Route path="/home" component={Home} />
-                            <Route path="/admin" component={Admin} />
-                            <Route path="/about" component={About} />
-                            <Route path="/list" component={List} />
-                            <Route path="/space/:mid" component={Space} />
-                            <Route path="/video/:bvid" component={Video} />
-                            <Route path="/test" component={Test} />
-                            <Redirect to="/home" />
-                        </Switch>
-                    </Suspense>
-                </div>
-                <Footer />
-            </Fragment>
-        )
-    }
+  render() {
+    return (
+      <Fragment>
+        <Nav />
+        <div className="h-screen w-full pt-16">
+          <Suspense fallback={
+            <div className="flex flex-col h-full w-full justify-center">
+              <Spin />
+            </div>
+          }>
+            <Switch>
+              <Route path="/home" component={Home} />
+              <Route path="/admin" component={Admin} />
+              <Route path="/about" component={About} />
+              <Route path="/list" component={List} />
+              <Route path="/space/:mid" component={Space} />
+              <Route path="/video/:bvid" component={Video} />
+              <Redirect to="/home" />
+            </Switch>
+          </Suspense>
+        </div>
+        <Footer />
+      </Fragment>
+    )
+  }
 }
