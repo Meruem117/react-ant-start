@@ -22,6 +22,12 @@ const HChart2: React.FC = () => {
     as: 'value',
     groupBy: ['author']
   })
+  dv.transform({
+    type: 'rename',
+    map: {
+      author: 'name'
+    }
+  })
 
   const dataTreemap = {
     name: 'root',
@@ -29,12 +35,12 @@ const HChart2: React.FC = () => {
   }
   const configTreemap = {
     data: dataTreemap,
-    colorField: 'author'
+    colorField: 'name'
   }
 
   const configFunnel = {
     data: dv.rows,
-    xField: 'author',
+    xField: 'name',
     yField: 'value',
     isTransposed: true,
     minSize: 0.3,

@@ -5,6 +5,7 @@ import { PlaySquareFilled, ClockCircleFilled } from '@ant-design/icons'
 import type { ulistItem, vlistItem } from '@/models/main'
 import { getUpInfo, getVideos } from '@/services/main'
 import { convertNumber, convertTime } from '@/utils'
+import { IMAGE_URL_PREFIX, UP_BACKGROUND_IMAGE } from '@/constant'
 
 const VideoList: React.FC = (props: any) => {
   const { mid } = props.match.params
@@ -63,7 +64,7 @@ const VideoList: React.FC = (props: any) => {
       <div
         className="flex flex-col h-1/4 w-4/5 mx-auto rounded bg-no-repeat bg-cover"
         style={{
-          backgroundImage: "url('http://i0.hdslb.com/bfs/space/cb1c3ef50e22b6096fde67febe863494caefebad.png@2560w_400h_100q_1o.webp')"
+          backgroundImage: `url(${IMAGE_URL_PREFIX + UP_BACKGROUND_IMAGE})`
         }}
       >
         <div
@@ -89,44 +90,42 @@ const VideoList: React.FC = (props: any) => {
       <div className="w-4/5 h-3/4 pt-12 bg-white rounded mx-auto">
         <div className="grid grid-cols-5 gap-5">
           {
-            vlist.map(video => {
-              return (
-                <div className="flex flex-col flex-nowrap flex-auto h-60" key={video.bvid}>
-                  <Link to={`/video/${video.bvid}`}>
-                    <div
-                      className="flex rounded cursor-pointer bg-no-repeat bg-cover h-40 w-full"
-                      style={{ backgroundImage: `url('${video.pic}')` }}
-                    >
-                      <div className="flex justify-end w-full">
-                        <div className="flex flex-col justify-end">
-                          <div
-                            className="bg-gray-800 bg-opacity-60 text-gray-300 rounded-tl-lg rounded-br px-1 py-0.5 text-xs tracking-wider"
-                          >{video.length}
-                          </div>
+            vlist.map(video => (
+              <div className="flex flex-col flex-nowrap flex-auto h-60" key={video.bvid}>
+                <Link to={`/video/${video.bvid}`}>
+                  <div
+                    className="flex rounded cursor-pointer bg-no-repeat bg-cover h-40 w-full"
+                    style={{ backgroundImage: `url('${IMAGE_URL_PREFIX + video.pic}')` }}
+                  >
+                    <div className="flex justify-end w-full">
+                      <div className="flex flex-col justify-end">
+                        <div
+                          className="bg-gray-800 bg-opacity-60 text-gray-300 rounded-tl-lg rounded-br px-1 py-0.5 text-xs tracking-wider"
+                        >{video.length}
                         </div>
                       </div>
                     </div>
-                  </Link>
-                  <Link to={`/video/${video.bvid}`}>
-                    <div
-                      className="h-12 text-base overflow-hidden mt-2 text-gray-800 hover:text-blue-400 cursor-pointer"
-                      title={video.title}
-                    >{video.title}
-                    </div>
-                  </Link>
-                  <div className="flex p-0.5 w-full" style={{ color: 'rgb(154, 154, 167)' }}>
-                    <div className="inline w-1/2">
-                      <PlaySquareFilled className="mr-2" />
-                      {convertNumber(video.play)}
-                    </div>
-                    <div className="inline w-1/2">
-                      <ClockCircleFilled className="mr-2" />
-                      {convertTime(video.created)}
-                    </div>
+                  </div>
+                </Link>
+                <Link to={`/video/${video.bvid}`}>
+                  <div
+                    className="h-12 text-base overflow-hidden mt-2 text-gray-800 hover:text-blue-400 cursor-pointer"
+                    title={video.title}
+                  >{video.title}
+                  </div>
+                </Link>
+                <div className="flex p-0.5 w-full" style={{ color: 'rgb(154, 154, 167)' }}>
+                  <div className="inline w-1/2">
+                    <PlaySquareFilled className="mr-2" />
+                    {convertNumber(video.play)}
+                  </div>
+                  <div className="inline w-1/2">
+                    <ClockCircleFilled className="mr-2" />
+                    {convertTime(video.created)}
                   </div>
                 </div>
-              )
-            })
+              </div>
+            ))
           }
         </div>
         <div className="flex justify-center mt-6 pb-6 bg-white">

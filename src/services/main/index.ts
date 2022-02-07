@@ -1,5 +1,5 @@
 import axios from 'axios'
-import type { upItem, ulistItem, vlistItem, videoItem } from '../../models/main'
+import type { upItem, ulistItem, vlistItem, videoItem } from '@/models/main'
 
 // up主列表
 export async function getUp(): Promise<upItem[]> {

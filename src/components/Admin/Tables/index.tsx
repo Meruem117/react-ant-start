@@ -46,7 +46,9 @@ const Tables: React.FC = () => {
     <div className="flex flex-col space-y-5 w-full h-full">
       <div className="text-2xl font-semibold tracking-wider">Table</div>
       <Table columns={columns} dataSource={upTable} />
-      <Button className="w-28 text-2xl">Add</Button>
+      <div className="flex justify-start">
+        <Button className="text-base">Add</Button>
+      </div>
     </div>
   )
 }

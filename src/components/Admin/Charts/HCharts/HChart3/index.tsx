@@ -3,6 +3,7 @@ import { UserOutlined, PlaySquareFilled, ProfileOutlined } from '@ant-design/ico
 import type { hDataItem3 } from '@/models/admin'
 import { getHiveData3 } from '@/services/admin'
 import { convertNumber } from '@/utils'
+import { IMAGE_URL_PREFIX } from '@/constant'
 
 const HChart3: React.FC = () => {
   const [data, setData] = useState<hDataItem3[]>([])
@@ -22,7 +23,7 @@ const HChart3: React.FC = () => {
             return (
               <div className="flex w-full h-auto p-3 justify-start cursor-pointer hover:shadow-2xl hover:text-blue-400">
                 <div
-                  style={{ backgroundImage: `url('${item.pic}')` }}
+                  style={{ backgroundImage: `url('${IMAGE_URL_PREFIX + item.pic}')` }}
                   className="rounded cursor-pointer bg-no-repeat bg-contain h-40 w-1/3"
                 ></div>
                 <div className="flex flex-col w-1/3 pl-5">
